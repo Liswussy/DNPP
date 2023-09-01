@@ -114,6 +114,7 @@ class mngprd : ComponentActivity() {
         val addButton = findViewById<Button>(R.id.btn_add);
 
         addButton.setOnClickListener {
+            val prdID = findViewById<EditText>(R.id.prdID).text.toString();
             val prdname = findViewById<EditText>(R.id.prdname).text.toString();
             val category= findViewById<Spinner>(R.id.categorySpinner).selectedItem.toString();
             val supplier  = findViewById<EditText>(R.id.prd_sup).text.toString();
@@ -122,6 +123,15 @@ class mngprd : ComponentActivity() {
             val size = findViewById<EditText>(R.id.prd_size).text.toString();
             val units = findViewById<Spinner>(R.id.sizeoption).selectedItem.toString()
             val price = findViewById<EditText>(R.id.prd_price).text.toString();
+
+            if(prdID == ""){
+                val text = "Product must have an ID"
+                val duration = Toast.LENGTH_SHORT
+
+                val toast = Toast.makeText(this, text, duration) // in Activity
+                toast.show()
+                return@setOnClickListener
+            }
 
             // string to integer
             val intQty: Int = quantity.toIntOrNull() ?: 0
@@ -142,7 +152,8 @@ class mngprd : ComponentActivity() {
             )
 
             db.collection("products")
-                .add(data)
+                .document(prdID)
+                .set(data)
                 .addOnSuccessListener { documentReference ->
                     Toast.makeText(
                         baseContext,

@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            val intent = Intent(this, dashbord::class.java)
+            val intent = Intent(this, SalesReportActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                         Toast.LENGTH_SHORT,
                     ).show()
                     val user = auth.currentUser
-                    val intent = Intent(this, dashbord::class.java)
+                    val intent = Intent(this, DashboardActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
         if (user != null) {
             // User is signed in
             // Perform actions when user is signed in
-            val intent = Intent(this, dashbord::class.java)
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
             finish()
         } else {

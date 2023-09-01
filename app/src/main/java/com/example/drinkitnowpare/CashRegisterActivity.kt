@@ -1,22 +1,46 @@
 package com.example.drinkitnowpare
 
+import android.Manifest
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.zxing.integration.android.IntentIntegrator
+import com.google.zxing.integration.android.IntentResult
 
 class CashRegisterActivity : ComponentActivity() {
+
+    private lateinit var scanButton: ImageButton
+    private val CAMERA_PERMISSION_REQUEST_CODE = 101
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                startBarcodeScanner()
+            } else {
+                // Handle permission denied
+            }
+        }
+
+    val productManager = ProductManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +50,9 @@ class CashRegisterActivity : ComponentActivity() {
 
         val parentLinearLayout: LinearLayout = findViewById(R.id.linearLayout)
 
-        val productManager = ProductManager(this)
 
-        if (productList != null){
+
+        if (productList != null) {
             productManager.setProductList(productList)
         }
 
@@ -63,7 +87,8 @@ class CashRegisterActivity : ComponentActivity() {
                         verticalLayout.addView(textView2)
                         horizontalLayout.addView(verticalLayout)
 
-                        val layoutParams = horizontalLayout.layoutParams as ViewGroup.MarginLayoutParams
+                        val layoutParams =
+                            horizontalLayout.layoutParams as ViewGroup.MarginLayoutParams
                         layoutParams.setMargins(
                             layoutParams.leftMargin,
                             layoutParams.topMargin,
@@ -95,40 +120,101 @@ class CashRegisterActivity : ComponentActivity() {
             intent.putExtra("productList", ArrayList(productManager.getProductList()))
             startActivity(intent)
         }
-        // Create and add multiple ConstraintLayouts with ImageView and TextView
-//        for (i in 1..5) {
-//            val horizontalLayout = createHorizontalLinearLayout(this)
-//            val verticalLayout = createVerticalLinearLayout(this)
-//
-//            val imageView = createImageView()
-//            val textView = createTextView("Item $i")
-//            val textView2 = createTextView("Price: $i")
-//
-//            // Add ImageView and TextView to the ConstraintLayout
-//            horizontalLayout.addView(imageView)
-//
-//            verticalLayout.addView(textView)
-//            verticalLayout.addView(textView2)
-//            horizontalLayout.addView(verticalLayout)
-//
-//            val layoutParams = horizontalLayout.layoutParams as ViewGroup.MarginLayoutParams
-//            layoutParams.setMargins(
-//                layoutParams.leftMargin,
-//                layoutParams.topMargin,
-//                layoutParams.rightMargin,
-//                resources.getDimensionPixelSize(R.dimen.bottom_margin) // Replace with your desired margin value
-//            )
-//
-//            horizontalLayout.setOnClickListener {
-//                // Handle the click event here
-//                // For example, you can show a Toast message
-//                val newProduct = Product(i, "Product $i", 10.99)
-//                productManager.addProduct(newProduct)
-//            }
-//
-//            // Add ConstraintLayout to the parent LinearLayout
-//            parentLinearLayout.addView(horizontalLayout)
-//        }
+
+        scanButton = findViewById(R.id.scanButton)
+        scanButton.setOnClickListener {
+            if (checkCameraPermission()) {
+                startBarcodeScanner()
+            } else {
+                requestCameraPermission()
+            }
+        }
+
+    }
+
+    private fun checkCameraPermission(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestCameraPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.CAMERA
+            )
+        ) {
+            // You can show an explanation here if needed
+        } else {
+            requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+        }
+    }
+
+    private fun startBarcodeScanner() {
+        val integrator = IntentIntegrator(this@CashRegisterActivity)
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)
+        integrator.setPrompt("Scan a Barcode")
+        integrator.setCameraId(0) // Use the rear-facing camera
+        integrator.initiateScan()
+    }
+
+    // Override onActivityResult to handle the scanned barcode result
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val result: IntentResult? =
+            IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (result != null) {
+            if (result.contents == null) {
+                // Handle canceled scan
+            } else {
+                // Handle successful scan
+                val barcodeContents = result.contents
+                getProduct(barcodeContents)
+
+                // Do something with the barcode data (e.g., display it)
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                startBarcodeScanner()
+            } else {
+                // Handle permission denied
+            }
+        }
+    }
+
+    fun getProduct(productID: String) {
+        val db = Firebase.firestore
+        val docRef = db.collection("products").document(productID)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document.data != null) {
+                    Log.v(TAG, document.toString());
+                    val productName = document.getString("prdnme")
+                    val price = document.getDouble("price")
+
+                    val newProduct = Product(document.id, productName, price, 1)
+                    productManager.addProduct(newProduct)
+
+                } else {
+                    showToast("Product does not exist")
+
+                }
+            }
+            .addOnFailureListener { exception ->
+                showToast("Database error")
+
+            }
     }
 
     private fun createHorizontalLinearLayout(context: Context): LinearLayout {
@@ -185,7 +271,12 @@ class CashRegisterActivity : ComponentActivity() {
 
 }
 
-data class Product(val productID: String?, val productName: String?, val price: Double?, var quantity: Int?) :
+data class Product(
+    val productID: String?,
+    val productName: String?,
+    val price: Double?,
+    var quantity: Int?
+) :
     Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -237,7 +328,7 @@ class ProductManager(private val context: Context) {
         return productList
     }
 
-    fun setProductList(array: ArrayList<Product>){
+    fun setProductList(array: ArrayList<Product>) {
         productList = array
         return
     }

@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -76,6 +77,14 @@ class CheckoutActivity : ComponentActivity() {
             db.collection("orders")
                 .add(data)
                 .addOnSuccessListener {
+
+                    if (productList != null) {
+                        for (product in productList){
+                            val productRef = db.collection("products").document(product.productID.toString())
+                            val qty:Double = (product.quantity!! *-1).toDouble()
+                            productRef.update("qnty", FieldValue.increment(qty))
+                        }
+                    }
                     val intent = Intent(this, PaymentSuccessActivity::class.java)
                     startActivity(intent)
                     finish()

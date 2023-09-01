@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="120dp"
+    android:layout_marginStart="20dp"
+    android:background="@drawable/search_shape"
+    android:backgroundTint="#FDF646"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/productNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Jack Daniels"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/beer" />
+
+</LinearLayout>
