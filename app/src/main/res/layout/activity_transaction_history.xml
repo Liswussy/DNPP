@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2F2E2E"
     tools:context=".TransactionHistoryActivity">
 
     <TextView
@@ -11,9 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
-        android:background="#D9D9D9"
+        android:background="#FDF646"
         android:textSize="20dp"
         android:gravity="center"
+        android:textColor="@color/black"
         android:text="Transaction History"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +25,9 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#636363"
-        android:textColor="#fff"
+        android:background="#FFFB9D"
+        android:textColor="@color/black"
+        android:elevation="10dp"
         android:paddingStart="15dp"
         android:gravity="center_vertical"
         android:layout_marginTop="40dp"
@@ -37,6 +40,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:background="#FDF646"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5">

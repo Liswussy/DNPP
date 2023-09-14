@@ -1,13 +1,16 @@
 package com.example.drinkitnowpare
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -24,7 +27,6 @@ class DashboardActivity : ComponentActivity() {
         val total_transaction = findViewById<TextView>(R.id.total_transaction)
         val total_amount = findViewById<TextView>(R.id.total_amount)
 
-
         val db = FirebaseFirestore.getInstance()
         val ordersCollection = db.collection("orders")
 
@@ -36,6 +38,20 @@ class DashboardActivity : ComponentActivity() {
         val end = currentDate.time + 86400000
         val endOfDay = Timestamp(Date(end)) // 86400000 milliseconds = 24 hours
 
+        val btn_sales = findViewById<Button>(R.id.btn_sales)
+        val btn_task = findViewById<Button>(R.id.btn_task)
+
+        btn_sales.setOnClickListener(){
+            val intent = Intent(this,SalesReportActivity::class.java)
+            startActivity(intent)
+
+        }
+        btn_task.setOnClickListener(){
+            val intent = Intent(this,dashbord::class.java)
+            startActivity(intent)
+        }
+
+
         ordersCollection
             .whereGreaterThanOrEqualTo("timestamp", startOfDay)
             .whereLessThan("timestamp", endOfDay)
@@ -44,12 +60,6 @@ class DashboardActivity : ComponentActivity() {
                 var totalSum = 0.0
                 var totalTransactions = 0
                 for (document in documents) {
-                    val text = "Hello toast!"
-                    val duration = Toast.LENGTH_SHORT
-
-                    val toast = Toast.makeText(this, text, duration) // in Activity
-                    toast.show()
-
                     val total:Double = document.getDouble("total")!!
                     totalSum += total
                     totalTransactions += 1
@@ -146,8 +156,6 @@ class DashboardActivity : ComponentActivity() {
             .addOnFailureListener { exception ->
                 println("Error getting documents: $exception")
             }
-
-
 
 
     }

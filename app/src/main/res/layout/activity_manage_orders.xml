@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2F2E2E"
     tools:context=".ManageOrdersActivity">
 
     <TextView
@@ -11,10 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
-        android:background="#D9D9D9"
+        android:background="#FDF646"
         android:textSize="20dp"
         android:gravity="center"
         android:text="Manage Orders"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +29,7 @@
         android:layout_marginTop="40dp"
         android:paddingStart="20dp"
         android:textSize="20dp"
+        android:textColor="#FDF646"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <LinearLayout
@@ -34,6 +37,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
+        android:background="#D9D9D9"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#D9D9D9"
+            android:background="@drawable/oval_border"
+            android:backgroundTint="#FDF646"
             android:layout_marginEnd="20dp"
             android:text="Cash Register" />
 
@@ -52,7 +57,8 @@
             android:id="@+id/button_trackOrders"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#D9D9D9"
+            android:background="@drawable/oval_border"
+            android:backgroundTint="#FDF646"
             android:layout_weight="1"
             android:text="Track Orders" />
 

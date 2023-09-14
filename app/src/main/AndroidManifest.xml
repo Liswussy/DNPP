@@ -20,6 +20,18 @@
         android:theme="@style/Theme.DrinkItNowPare"
         tools:targetApi="31">
         <activity
+            android:name=".delivery_report"
+            android:exported="false" />
+        <activity
+            android:name=".edit_acc_emplo"
+            android:exported="false" />
+        <activity
+            android:name=".edit_employee_account"
+            android:exported="false" />
+        <activity
+            android:name=".ReceiptActivity"
+            android:exported="false" />
+        <activity
             android:name=".SalesReportActivity"
             android:exported="false" />
         <activity

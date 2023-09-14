@@ -85,7 +85,9 @@ class CheckoutActivity : ComponentActivity() {
                             productRef.update("qnty", FieldValue.increment(qty))
                         }
                     }
-                    val intent = Intent(this, PaymentSuccessActivity::class.java)
+                    val intent = Intent(this, ReceiptActivity::class.java)
+                    intent.putExtra("productList", productList)
+                    intent.putExtra("total", total)
                     startActivity(intent)
                     finish()
                 }

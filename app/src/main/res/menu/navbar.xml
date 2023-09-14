@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <item
-        android:id="@+id/man_prd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="Manage Product"
-        android:icon="@drawable/manageprod"/>
-    <item
-        android:id="@+id/scan_qr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="Scan"
-        android:icon="@drawable/scan_qr"/>
-    <item
-        android:id="@+id/sales_report"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="Report"
-        android:icon="@drawable/sales"/>
-    <item
-        android:id="@+id/hstry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="History"
-        android:icon="@drawable/history"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/homempage"
+            android:icon="@drawable/house"
+            android:title="Home" />
+        <item
+            android:id="@+id/taskpage"
+            android:icon="@drawable/taskicon"
+            android:title="Task" />
+        <item
+            android:id="@+id/helppages"
+            android:icon="@drawable/baseline_help_24"
+            android:title="Help" />
+        <item
+            android:id="@+id/settingspage"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="Settings" />
+
+    </group>
+
+    <item android:title=""/>
+    <group>
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/baseline_logout_24"
+            android:title="Log-Out" />
+
+    </group>
+
+
+
 </menu>

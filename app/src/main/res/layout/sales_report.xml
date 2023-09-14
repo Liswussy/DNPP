@@ -7,39 +7,56 @@
     android:background="#292728">
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:background="#FDF646"
         android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="Sales Report"
             android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_download_24" />
+            android:src="@drawable/baseline_download_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/dateButton"
+            app:layout_constraintHorizontal_bias="0.791"
+            app:layout_constraintStart_toEndOf="@+id/textView16"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.52" />
 
         <ImageView
+            android:id="@+id/dateButton"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_calendar_month_24" />
+            android:layout_marginEnd="44dp"
+            android:src="@drawable/baseline_calendar_month_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.52" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ScrollView
@@ -71,6 +88,7 @@
 
         <!-- Total Sales TextView -->
         <TextView
+            android:id="@+id/totalSales"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -85,12 +103,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Total Discount"
+            android:text="Total Discount: Php 0.00"
             android:textColor="@android:color/black"
             android:textSize="21sp" />
 
         <!-- Net Sales TextView -->
         <TextView
+            android:id="@+id/netSales"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

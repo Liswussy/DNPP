@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#2F2E2E">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -10,11 +11,12 @@
         <EditText
             android:id="@+id/prdID"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@+id/page_title"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="121dp"
+            android:background="@drawable/search_shape"
             android:hint="Product ID"
             android:inputType="text"
             android:maxLines="1"
@@ -25,11 +27,12 @@
         <EditText
             android:id="@+id/prdname"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_height="40dp"
+            android:layout_below="@+id/prdID"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="194dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="215dp"
+            android:background="@drawable/search_shape"
             android:hint="Product Name"
             android:inputType="text"
             android:maxLines="1"
@@ -42,20 +45,23 @@
             android:id="@+id/btn_add"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/prdID"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="529dp"
+            android:layout_marginTop="350dp"
+            android:background="@drawable/search_shape"
+            android:backgroundTint="#FDF646"
             android:text="Add" />
 
         <EditText
             android:id="@+id/prd_price"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@+id/prd_size"
             android:layout_alignEnd="@+id/sizeoption"
-            android:layout_marginTop="43dp"
-            android:layout_marginEnd="-5dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/search_shape"
             android:hint="Price"
             android:inputType="text"
             android:maxLines="1"
@@ -66,11 +72,12 @@
         <EditText
             android:id="@+id/pt_cost"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prd_price"
+            android:layout_height="40dp"
+            android:layout_below="@+id/prd_qty"
             android:layout_alignStart="@+id/prd_price"
-            android:layout_marginStart="-198dp"
-            android:layout_marginTop="-44dp"
+            android:layout_marginStart="-195dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/search_shape"
             android:hint="Cost"
             android:inputType="text"
             android:maxLines="1"
@@ -81,11 +88,12 @@
         <EditText
             android:id="@+id/prd_size"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prd_qty"
-            android:layout_alignEnd="@+id/prd_qty"
-            android:layout_marginTop="-43dp"
-            android:layout_marginEnd="-127dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/prd_sku"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="95dp"
+            android:background="@drawable/search_shape"
             android:hint="Size"
             android:inputType="text"
             android:maxLines="1"
@@ -96,11 +104,12 @@
         <EditText
             android:id="@+id/prd_qty"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@+id/prd_sku"
             android:layout_alignEnd="@+id/prd_sup"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="0dp"
+            android:background="@drawable/search_shape"
             android:hint="Quantity"
             android:inputType="text"
             android:maxLines="1"
@@ -111,11 +120,12 @@
         <EditText
             android:id="@+id/prd_sku"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prd_sup"
-            android:layout_alignEnd="@+id/prd_sup"
-            android:layout_marginTop="-45dp"
-            android:layout_marginEnd="-207dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/categorySpinner"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/search_shape"
             android:hint="SKU"
             android:inputType="text"
             android:maxLines="1"
@@ -126,11 +136,12 @@
         <EditText
             android:id="@+id/prd_sup"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@+id/prdname"
             android:layout_alignStart="@+id/prdname"
             android:layout_marginStart="0dp"
             android:layout_marginTop="35dp"
+            android:background="@drawable/search_shape"
             android:hint="Supplier"
             android:inputType="text"
             android:maxLines="1"
@@ -141,33 +152,36 @@
         <Spinner
             android:id="@+id/categorySpinner"
             android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:hint="Category"
-            android:layout_alignParentTop="true"
+            android:layout_height="40dp"
+            android:layout_below="@+id/prdID"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="204dp"
-            android:layout_marginEnd="42dp" />
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="42dp"
+            android:background="@drawable/search_shape"
+            android:hint="Category" />
 
         <Spinner
             android:id="@+id/sizeoption"
             android:layout_width="85dp"
             android:layout_height="30dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/prd_sku"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="363dp"
-            android:layout_marginEnd="17dp" />
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/search_shape" />
 
         <TextView
             android:id="@+id/page_title"
-            android:layout_width="278dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="84dp"
-            android:layout_marginEnd="-26dp"
-            android:layout_toStartOf="@+id/btn_logout"
+            android:background="#FDF646"
+            android:paddingTop="5dp"
             android:text="Product Information"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="24sp" />
 
         <Button
@@ -178,19 +192,24 @@
             android:layout_marginLeft="-180dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/btn_add"
+            android:background="@drawable/search_shape"
+            android:backgroundTint="#FDF646"
             android:gravity="center"
             android:text="View" />
 
         <Button
             android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="13dp"
             android:layout_marginRight="30dp"
-            android:text="Log-Out" />
+            android:background="@drawable/search_shape"
+            android:backgroundTint="#FDF646"
+            android:text="Log-Out"
+            android:textSize="16sp" />
 
 
     </RelativeLayout>

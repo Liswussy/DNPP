@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#292728">
-
+    android:background="#292728"
+    tools:context=".edit_acc_emplo">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
-        android:text="Create Account"
+        android:text="Edit Account"
         android:textColor="#FDF646"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,12 +40,12 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
-        android:text="Please provide the needed information to create an account"
+        android:layout_marginTop="16dp"
+        android:text="Modify Registered Accounts "
         android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="12dp" />
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        tools:layout_editor_absoluteX="16dp" />
 
     <View
         android:layout_width="370dp"
@@ -158,7 +158,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/btn_create"
         android:layout_width="280dp"
@@ -167,9 +166,10 @@
         android:layout_marginEnd="64dp"
         android:background="@drawable/oval_border"
         android:backgroundTint="#FDF646"
-        android:text="Create Account"
+        android:text="Edit Account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
