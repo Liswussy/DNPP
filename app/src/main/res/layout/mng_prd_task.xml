@@ -6,33 +6,34 @@
     android:background="#2F2E2E"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="116dp"
-        android:text="Select a Task"
-        android:textColor="#FDF646"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="72dp"-->
+<!--        android:layout_marginEnd="116dp"-->
+<!--        android:text="Select a Task"-->
+<!--        android:textColor="#FDF646"-->
+<!--        android:textSize="30sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="360dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/oval_border"
         android:backgroundTint="#C8C8C8"
         android:orientation="vertical"
-        android:layout_marginTop="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/btn_add_new_prd"
                 android:layout_width="180dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
@@ -43,6 +44,7 @@
                 android:text="Add New Product" />
 
             <Button
+                android:id="@+id/btn_updt_product"
                 android:layout_width="180dp"
                 android:layout_height="150dp"
                 android:background="@drawable/search_shape"
@@ -61,6 +63,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_prd_del"
                 android:layout_width="180dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
@@ -71,6 +74,7 @@
                 android:text="Product Delivery" />
 
             <Button
+                android:id="@+id/btn_view_prd"
                 android:layout_width="180dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
@@ -80,6 +84,61 @@
                 android:textSize="14sp"
                 android:text="View Products"/>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+            <Button
+                android:id="@+id/btn_mnge_emp"
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/search_shape"
+                android:backgroundTint="#FDF646"
+                android:textSize="14sp"
+                android:text="Manage Employee"
+
+                />
+            <Button
+                android:id="@+id/btn_del_rep"
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/search_shape"
+                android:backgroundTint="#FDF646"
+                android:textSize="14sp"
+                android:text="Delivery Report"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            >
+
+            <Button
+                android:id="@+id/btn_sales_report"
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/search_shape"
+                android:backgroundTint="#FDF646"
+                android:textSize="14sp"
+                android:text="Sales Report"
+
+                />
 
         </LinearLayout>
 

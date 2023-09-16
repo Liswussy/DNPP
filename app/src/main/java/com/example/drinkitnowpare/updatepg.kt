@@ -6,6 +6,6 @@ import android.os.Bundle
 class updatepg : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_updatepg)
+        //setContentView(R.layout.activity_updatepg)
     }
 }
