@@ -37,16 +37,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FDF646"
+            android:textColor="@color/black"
             android:layout_marginEnd="20dp"
             android:text="Manage Orders" />
 
         <Button
-            android:id="@+id/button_manageProducts"
+            android:id="@+id/button_manageDelivery"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:background="#FDF646"
             android:layout_weight="1"
-            android:text="Manage Products" />
+            android:text="Manage Delivery" />
 
     </LinearLayout>
 

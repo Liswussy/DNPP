@@ -20,6 +20,31 @@
         android:theme="@style/Theme.DrinkItNowPare"
         tools:targetApi="31">
         <activity
+            android:name=".ConsignorProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConsignorSalesReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SalesTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageEmployeeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManagerTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManagerDashboardActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
             android:name=".delivery_report"
             android:exported="false" />
         <activity
@@ -36,7 +61,8 @@
             android:exported="false" />
         <activity
             android:name=".DashboardActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".PaymentSuccessActivity"
             android:exported="false" />

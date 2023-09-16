@@ -49,6 +49,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/oval_border"
+            android:textColor="@color/black"
             android:backgroundTint="#FDF646"
             android:layout_marginEnd="20dp"
             android:text="Cash Register" />
@@ -58,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/oval_border"
+            android:textColor="@color/black"
             android:backgroundTint="#FDF646"
             android:layout_weight="1"
             android:text="Track Orders" />

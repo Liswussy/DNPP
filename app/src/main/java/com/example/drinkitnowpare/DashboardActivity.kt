@@ -3,23 +3,29 @@ package com.example.drinkitnowpare
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 
-class DashboardActivity : ComponentActivity() {
+class DashboardActivity : AppCompatActivity() {
+
+    lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_dashboard)
@@ -38,18 +44,18 @@ class DashboardActivity : ComponentActivity() {
         val end = currentDate.time + 86400000
         val endOfDay = Timestamp(Date(end)) // 86400000 milliseconds = 24 hours
 
-        val btn_sales = findViewById<Button>(R.id.btn_sales)
-        val btn_task = findViewById<Button>(R.id.btn_task)
-
-        btn_sales.setOnClickListener(){
-            val intent = Intent(this,SalesReportActivity::class.java)
-            startActivity(intent)
-
-        }
-        btn_task.setOnClickListener(){
-            val intent = Intent(this,dashbord::class.java)
-            startActivity(intent)
-        }
+//        val btn_sales = findViewById<Button>(R.id.btn_sales)
+//        val btn_task = findViewById<Button>(R.id.btn_task)
+//
+//        btn_sales.setOnClickListener(){
+//            val intent = Intent(this,SalesReportActivity::class.java)
+//            startActivity(intent)
+//
+//        }
+//        btn_task.setOnClickListener(){
+//            val intent = Intent(this,dashbord::class.java)
+//            startActivity(intent)
+//        }
 
 
         ordersCollection
@@ -157,8 +163,53 @@ class DashboardActivity : ComponentActivity() {
                 println("Error getting documents: $exception")
             }
 
+        val drawerLayout = findViewById<DrawerLayout>(R.id.my_drawer_layout);
+        actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+        // to make the Navigation drawer icon always appear on the action bar
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
+
+        val navigationView = findViewById<NavigationView>(R.id.navigation_view)
+
+        navigationView.setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    val intent = Intent(this,DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.task -> {
+                    val intent = Intent(this,dashbord::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.sales -> {
+                    val intent = Intent(this,SalesReportActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.logout -> {
+                    Firebase.auth.signOut()
+                    val intent = Intent(this,MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
 
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }

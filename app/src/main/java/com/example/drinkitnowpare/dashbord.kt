@@ -16,9 +16,10 @@ class dashbord : ComponentActivity() {
             startActivity(intent)
         }
 
-        val buttonManageProducts = findViewById<Button>(R.id.button_manageProducts)
-        buttonManageProducts.setOnClickListener {
-            val intent = Intent(this, mngprd::class.java)
+        // Manage Delivery
+        val btn_mnge_emp = findViewById<Button>(R.id.button_manageDelivery)
+        btn_mnge_emp.setOnClickListener{
+            val intent = Intent(this, DeliveryActivity::class.java)
             startActivity(intent)
         }
 

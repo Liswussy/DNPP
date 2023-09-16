@@ -222,7 +222,7 @@ class SalesReportActivity : ComponentActivity() {
 
 
                 } else {
-                    // Handle errors
+                    println("Error getting documents")
                 }
             }
     }
