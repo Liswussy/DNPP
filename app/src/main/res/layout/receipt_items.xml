@@ -19,7 +19,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Redhorse"
-            android:textColor="#FDF646"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="20"
-            android:textColor="#FDF646"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="₱50"
-            android:textColor="#FDF646"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="₱1000"
-            android:textColor="#FDF646"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
     </LinearLayout>

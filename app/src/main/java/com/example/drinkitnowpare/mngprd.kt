@@ -105,12 +105,6 @@ class mngprd : ComponentActivity() {
 
         }
 
-        val logoutButton = findViewById<Button>(R.id.btn_logout);
-
-        logoutButton.setOnClickListener {
-            Firebase.auth.signOut();
-        }
-
         val addButton = findViewById<Button>(R.id.btn_add);
 
         addButton.setOnClickListener {

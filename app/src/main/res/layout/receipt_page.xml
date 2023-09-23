@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#2F2E2E">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView19"
@@ -60,7 +59,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:text="San Juan"
-                    android:textColor="#FDF646"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/textView19"
                     tools:layout_editor_absoluteX="58dp" />
@@ -71,7 +70,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:text="Telp. 000-0000-00"
-                    android:textColor="#FDF646"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/textView18"
                     tools:layout_editor_absoluteX="51dp" />
@@ -95,37 +94,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Customer Name: "
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/customer_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="Liswussy"
-                        android:textColor="#FDF646"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Date: "
-                        android:textColor="#FDF646"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/date_receipt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -146,8 +119,34 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Date: "
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/date_receipt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="S.I.# "
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -157,7 +156,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:text="12345"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -173,7 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Cashier Name: "
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -183,7 +182,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:text="Wuzzy"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -213,7 +212,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="Items"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="16sp" />
 
                     <TextView
@@ -223,7 +222,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="Quantity"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="16sp" />
 
                     <TextView
@@ -233,7 +232,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="Price"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="16sp" />
 
                     <TextView
@@ -243,7 +242,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="Amount"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -274,7 +273,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sub-Total"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -285,7 +284,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="₱0.00"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -301,7 +300,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Discount: "
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -312,7 +311,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="₱0.00"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -328,7 +327,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="VAT:"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -339,7 +338,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="₱0.00"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -355,7 +354,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total: "
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -366,7 +365,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="₱0.00"
-                        android:textColor="#FDF646"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -393,6 +392,7 @@
             android:layout_marginBottom="28dp"
             android:background="@drawable/textview_rec_border"
             android:paddingTop="5dp"
+            android:textColor="@color/white"
             android:text="Thank You Click to \n Proceed"
             android:textSize="20sp" />
 

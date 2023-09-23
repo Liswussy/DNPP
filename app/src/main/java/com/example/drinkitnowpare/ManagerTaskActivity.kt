@@ -19,11 +19,11 @@ class ManagerTaskActivity : ComponentActivity() {
         }
 
         // Update Product
-        val btn_updt_product = findViewById<Button>(R.id.btn_updt_product)
-        btn_updt_product.setOnClickListener{
-            val intent = Intent(this, viewprd::class.java)
-            startActivity(intent)
-        }
+//        val btn_updt_product = findViewById<Button>(R.id.btn_updt_product)
+//        btn_updt_product.setOnClickListener{
+//            val intent = Intent(this, EditActivity ::class.java)
+//            startActivity(intent)
+//        }
 
         // Product Delivery
         val btn_prd_del = findViewById<Button>(R.id.btn_prd_del)

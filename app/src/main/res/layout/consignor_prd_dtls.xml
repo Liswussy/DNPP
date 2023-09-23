@@ -39,35 +39,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/con_nme"
         android:layout_width="150dp"
         android:layout_height="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="164dp"
-        android:layout_marginEnd="12dp"
         android:background="@drawable/textview_rec_border"
         android:paddingStart="8dp"
         android:paddingTop="8dp"
         android:text="Consignor Name"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="130dp"
         android:layout_height="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="164dp"
-        android:layout_marginEnd="108dp"
         android:background="@drawable/textview_rec_border"
         android:paddingStart="8dp"
         android:paddingTop="8dp"
         android:text="Date"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/con_nme"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -270,7 +270,8 @@
         android:layout_marginTop="64dp"
         android:background="@drawable/search_shape"
         android:text="Back"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
-        tools:layout_editor_absoluteX="105dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

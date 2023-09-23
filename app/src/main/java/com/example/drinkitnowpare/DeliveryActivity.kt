@@ -3,8 +3,10 @@ package com.example.drinkitnowpare
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.google.firebase.Timestamp
@@ -20,8 +22,14 @@ class DeliveryActivity : ComponentActivity() {
         //placeholder
         val supplier = "Lewis" // Replace with the actual supplier name
         val productName = "Red Horse" // Replace with the actual product name
-
+        val supp_name = findViewById<Spinner>(R.id.supp_sp)
         //quantity
+
+        val data = listOf("Select Supplier","Lewis", "Monkey Eagle", "SMB")
+        val secondAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, data)
+        secondAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        supp_name.adapter = secondAdapter
+
         val prdQuantityEditText = findViewById<EditText>(R.id.prd_quanity)
 
         val btn_confirm = findViewById<Button>(R.id.btn_confirm)

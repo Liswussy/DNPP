@@ -18,20 +18,19 @@
             android:layout_marginTop="80dp"
             android:layout_marginEnd="166dp"
             android:background="@drawable/inp_box_cont"
-            android:hint="Product Name"
             android:elevation="20dp"
+            android:hint="Product Name"
             android:paddingStart="10dp" />
 
         <Spinner
             android:id="@+id/drp_categ"
             android:layout_width="120dp"
             android:layout_height="35dp"
-            android:layout_below="@+id/sb_prdname"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="260dp"
-            android:layout_marginTop="-39dp"
-            android:layout_marginEnd="166dp"
 
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="82dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/inp_box_cont" />
 
         <Button

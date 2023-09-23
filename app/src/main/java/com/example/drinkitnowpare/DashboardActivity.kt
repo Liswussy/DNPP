@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -36,13 +37,38 @@ class DashboardActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val ordersCollection = db.collection("orders")
 
-        val currentDate = Calendar.getInstance().time
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-        val currentDateString = dateFormat.format(currentDate)
+        val phTimeZone = TimeZone.getTimeZone("Asia/Manila")
+        val calendar = Calendar.getInstance(phTimeZone)
 
-        val startOfDay = Timestamp(currentDate)
-        val end = currentDate.time + 86400000
-        val endOfDay = Timestamp(Date(end)) // 86400000 milliseconds = 24 hours
+        // Get the current date in PH Time
+        val currentDate = calendar.time
+
+        // Calculate the start of the day (midnight) timestamp
+        calendar.time = currentDate
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        val startOfDay = calendar.time
+        val startOfDayTimestamp = startOfDay.time
+
+        // Calculate the end of the day (just before midnight) timestamp
+        calendar.time = currentDate
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 999)
+        val endOfDay = calendar.time
+        val endOfDayTimestamp = endOfDay.time
+
+
+//        val currentDate = Calendar.getInstance().time
+//        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+//        val currentDateString = dateFormat.format(currentDate)
+//
+//        val startOfDay = Timestamp(currentDate)
+//        val end = currentDate.time + 86400000
+//        val endOfDay = Timestamp(Date(end)) // 86400000 milliseconds = 24 hours
 
 //        val btn_sales = findViewById<Button>(R.id.btn_sales)
 //        val btn_task = findViewById<Button>(R.id.btn_task)
