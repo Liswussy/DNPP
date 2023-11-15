@@ -28,8 +28,8 @@ class delivery_report : ComponentActivity() {
                 for (document in querySnapshot.documents) {
                     // Get data from all fields in each document
                     val supplier = document.getString("supplier")
-                    val productName = document.getString("product_name")
-                    val quantity = document.getLong("quantity")?.toInt() ?: 0
+                    val products = document.get("products") as List<Map<String, Any>>?
+                    // val quantity = document.getLong("quantity")?.toInt() ?: 0
                     val dateTimestamp = document.getTimestamp("date")
 
                     // Format the date
@@ -44,11 +44,43 @@ class delivery_report : ComponentActivity() {
                     val supplierTextView = itemView.findViewById<TextView>(R.id.tv_supp)
                     supplierTextView.text = supplier
 
-                    val productNameTextView = itemView.findViewById<TextView>(R.id.prd_name)
-                    productNameTextView.text = productName
+                    var productsText = ""
 
-                    val quantityTextView = itemView.findViewById<TextView>(R.id.tv_qty)
-                    quantityTextView.text = quantity.toString()
+                    val productNameTextView = itemView.findViewById<TextView>(R.id.prd_name)
+                    if (products != null) {
+                        for (map in products) {
+                            val prodID = map["prodID"]
+                            val qty = map["qty"].toString().toInt()
+
+                            if (qty > 0){
+                                val docRef = db.collection("products").document(prodID as String)
+                                docRef.get()
+                                    .addOnSuccessListener { documentSnapshot ->
+                                        if (documentSnapshot.exists()) {
+                                            val prdnme = documentSnapshot.getString("prdnme")
+
+                                            val text = "\n${prdnme}: $qty"
+                                            productsText += text
+                                            productNameTextView.text = productsText.toString()
+                                        } else {
+                                            println("Document does not exist")
+                                        }
+                                    }
+                                    .addOnFailureListener { e ->
+                                        println("Error getting document: $e")
+                                    }
+
+
+                            }
+
+                        }
+                    }
+
+
+
+
+//                    val quantityTextView = itemView.findViewById<TextView>(R.id.tv_qty)
+//                    quantityTextView.text = quantity.toString()
 
                     val dateTextView = itemView.findViewById<TextView>(R.id.tv_date)
                     dateTextView.text = date

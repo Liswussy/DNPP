@@ -26,49 +26,35 @@
             android:textSize="24sp" />
     </LinearLayout>
 
+
     <ImageButton
         android:id="@+id/dl_img_btn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="48dp"
-        android:background="@color/zxing_transparent"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="168dp"
 
+        android:background="@color/zxing_transparent"
         android:scaleType="fitXY"
         android:src="@drawable/download_icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toEndOf="@+id/datebutton"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
-
-    <TextView
-        android:id="@+id/con_nme"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
-        android:background="@drawable/textview_rec_border"
-        android:paddingStart="8dp"
-        android:paddingTop="8dp"
-        android:text="Consignor Name"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView17"
+    <Button
+        android:id="@+id/datebutton"
         android:layout_width="130dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/textview_rec_border"
-        android:paddingStart="8dp"
-        android:paddingTop="8dp"
         android:text="Date"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/con_nme"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
     <LinearLayout
         android:id="@+id/linearLayout10"
@@ -133,65 +119,15 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="250dp">
 
                 <LinearLayout
+                    android:id="@+id/itemLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="250dp"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tv_prd_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="Product Name"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-
-                            />
-
-                        <TextView
-                            android:id="@+id/tv_sold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:text="Sold"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-
-
-                            />
-
-                        <TextView
-                            android:id="@+id/tv_cost"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:text="Cost"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/tv_amount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="50dp"
-                            android:text="Amount"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-
-
-                    </LinearLayout>
-
-
                 </LinearLayout>
-
 
             </ScrollView>
 
@@ -267,10 +203,11 @@
         android:id="@+id/btn_back"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/search_shape"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
 

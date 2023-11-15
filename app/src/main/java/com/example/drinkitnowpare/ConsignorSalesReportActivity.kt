@@ -2,6 +2,7 @@ package com.example.drinkitnowpare
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -63,25 +64,36 @@ class ConsignorSalesReportActivity : ComponentActivity() {
                     textView.text = supp
                     textView.width = LinearLayout.LayoutParams.MATCH_PARENT // Set width
                     textView.height = heightInPixels // Set height
-                    textView.setTextColor(resources.getColor(R.color.black)) // Set text color
+                    textView.setTextColor(Color.parseColor("#1B21E8")) // Set text color
+                    val textSizeInSp = 20 // Set the desired text size in scaled pixels
+                    textView.textSize = textSizeInSp.toFloat()
+                    textView.setTypeface(null, Typeface.BOLD)
+
+                    // Set padding for spacing
+                    val paddingLeft = 70
+                    val paddingTop = 10
+                    val paddingRight = 0
+                    val paddingBottom = 10
+                    textView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom)
 
                     // Create a shape drawable for the outline
                     val shapeDrawable = GradientDrawable()
                     shapeDrawable.shape = GradientDrawable.RECTANGLE
                     shapeDrawable.setColor(Color.TRANSPARENT) // Set background color
-                    shapeDrawable.setStroke(2, Color.WHITE) // Set border width and color
+                    shapeDrawable.setStroke(2, Color.BLACK) // Set border width and color
 
                     // Set the shape drawable as the background of the TextView
                     textView.background = shapeDrawable
 
-
-                    textView.layoutParams = LinearLayout.LayoutParams(
+                    // Set margins for spacing
+                    val layoutParams = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT
                     )
+//                    layoutParams.setMargins(0, 0, 0, 16) // Adjust the values as needed
+//                    textView.layoutParams = layoutParams
 
                     textView.setOnClickListener { view ->
-
                         val intent = Intent(this, ConsignorProductDetailsActivity::class.java)
                         intent.putStringArrayListExtra("documentIds", ArrayList(documentIds))
                         startActivity(intent)

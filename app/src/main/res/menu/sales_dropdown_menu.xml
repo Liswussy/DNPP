@@ -17,4 +17,7 @@
     <item
         android:id="@+id/menu_last_month"
         android:title="Last Month" />
+    <item
+        android:id="@+id/menu_this_year"
+        android:title="This Year" />
 </menu>

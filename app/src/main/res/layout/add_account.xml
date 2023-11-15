@@ -29,23 +29,25 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="228dp"
         android:text="Create Account"
         android:textColor="#FDF646"
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="172dp"
         android:text="Please provide the needed information to create an account"
         android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="12dp" />
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="370dp"
@@ -53,8 +55,9 @@
         android:layout_marginTop="232dp"
         android:background="#FFFFFF"
 
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
@@ -89,6 +92,7 @@
         android:paddingStart="10dp"
         android:text=""
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/firstname"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -123,6 +127,7 @@
         android:paddingStart="10dp"
         android:text=""
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/contactnum"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -157,6 +162,7 @@
         android:paddingStart="10dp"
         android:text=""
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Password"
         app:layout_constraintTop_toTopOf="parent" />
 

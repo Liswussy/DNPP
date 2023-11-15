@@ -54,6 +54,7 @@ android {
 
 dependencies {
 
+    implementation("com.google.android.material:material:1.4.0")
     implementation("com.journeyapps:zxing-android-embedded:3.6.0")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")

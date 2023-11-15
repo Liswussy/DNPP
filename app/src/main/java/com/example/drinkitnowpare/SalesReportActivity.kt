@@ -92,6 +92,11 @@ class SalesReportActivity : ComponentActivity() {
                     queryFirestore("last_month")
                     true
                 }
+                R.id.menu_this_year -> {
+                    // Handle "Last Month" click
+                    queryFirestore("this_year")
+                    true
+                }
                 else -> false
             }
         }
@@ -144,6 +149,13 @@ class SalesReportActivity : ComponentActivity() {
                 calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
                 val lastDayOfLastMonth = calendar.time
                 queryFirestoreWithTimestamp(firstDayOfLastMonth, lastDayOfLastMonth)
+            }
+            "this_year" -> {
+                // Query for documents created in the current year
+                calendar.set(Calendar.DAY_OF_YEAR, 1)
+                val firstDayOfThisYear = calendar.time
+                val lastDayOfThisYear = Date() // Using the current date as the last day of the current year
+                queryFirestoreWithTimestamp(firstDayOfThisYear, lastDayOfThisYear)
             }
         }
     }

@@ -25,23 +25,26 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FFFB9D"
-        android:textColor="@color/black"
+        android:layout_marginTop="80dp"
+        android:background="#DE0000"
         android:elevation="10dp"
-        android:paddingStart="15dp"
         android:gravity="center_vertical"
-        android:layout_marginTop="40dp"
+        android:paddingStart="15dp"
         android:text="Track Orders"
+        android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="#FDF646"
+        android:layout_height="350dp"
+        android:layout_marginTop="0dp"
+        android:background="#C1C1C1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
@@ -49,17 +52,37 @@
             android:id="@+id/layoutOrders"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <ImageView
+        android:id="@+id/arrow_back_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="52dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

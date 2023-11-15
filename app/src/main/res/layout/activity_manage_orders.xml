@@ -25,11 +25,12 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome Lewis"
         android:layout_marginTop="40dp"
         android:paddingStart="20dp"
-        android:textSize="20dp"
+        android:text="Welcome Lewis"
         android:textColor="#FDF646"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <LinearLayout

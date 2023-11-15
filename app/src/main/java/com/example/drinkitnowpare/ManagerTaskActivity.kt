@@ -1,7 +1,6 @@
 package com.example.drinkitnowpare
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
@@ -31,11 +30,17 @@ class ManagerTaskActivity : ComponentActivity() {
             val intent = Intent(this, DeliveryActivity::class.java)
             startActivity(intent)
         }
+        //Add Supplier
+        val btn_supp = findViewById<Button>(R.id.btn_supp)
+        btn_supp.setOnClickListener{
+            val intent = Intent(this, AddNewSupplierActivity::class.java)
+            startActivity(intent)
+        }
 
         // View Product
-        val btn_view_prd = findViewById<Button>(R.id.btn_view_prd)
-        btn_view_prd.setOnClickListener{
-            val intent = Intent(this, viewprd::class.java)
+        val btn_view_task = findViewById<Button>(R.id.btn_view_task)
+        btn_view_task.setOnClickListener{
+            val intent = Intent(this, ViewDashboardActivity::class.java)
             startActivity(intent)
         }
 

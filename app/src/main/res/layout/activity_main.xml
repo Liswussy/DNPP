@@ -75,18 +75,17 @@
     </LinearLayout>
 
 
-
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="30dp"
-        android:textColor="#FDF646"
         android:gravity="center"
-        android:textStyle="bold"
         android:text="Sign-In"
-        android:textSize="40sp" />
+        android:textColor="#FDF646"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
 
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2F2E2E"
     >
-
 
     <LinearLayout
         android:id="@+id/linearLayout15"
@@ -21,8 +21,8 @@
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="140dp"
+            android:layout_gravity="center"
             android:text="Delivery"
             android:textColor="@color/black"
             android:textSize="30sp"
@@ -32,111 +32,174 @@
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="50dp"
+            android:layout_gravity="center"
             android:background="@color/zxing_transparent"
             android:scaleType="fitXY"
 
-            android:src="@drawable/baseline_image_24"/>
+            android:src="@drawable/baseline_image_24" />
 
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout8"
-        android:layout_width="350dp"
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="30dp"
-        android:background="#E4E4E4"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
 
-        <TextView
-            android:id="@+id/consi_nme"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#FDF646"
-            android:elevation="10dp"
-            android:gravity="center"
-            android:text="Supplier Name"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
-
-        <Spinner
-            android:id="@+id/supp_sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="#FDF646"
-            android:elevation="10dp"
-            android:gravity="center"
-            android:text="Product List"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
-
-
-
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/linearLayout8"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
 
                 <TextView
-                    android:id="@+id/prd_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:text="Red Horse"
+                    android:id="@+id/consi_nme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#FDF646"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:text="Supplier Name"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/supp_sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#FDF646"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:text="Product List"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
 
 
-                <EditText
-                    android:id="@+id/prd_quanity"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="80dp"
-                    android:hint="Quantity"
-                    android:textColor="@color/black" />
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </ScrollView>
 
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayout18"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
-        </ScrollView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#FDF646"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:text="Product Issues"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/prd_defect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#FDF646"
+                    android:gravity="center"
+                    android:text="Add a comment"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/commentBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/edit_text"
+                        android:hint="Add a comment..."
+                        android:padding="16dp" />
 
 
-    </LinearLayout>
+                </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_confirm"
-        android:layout_width="180dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="116dp"
-        android:text="Confirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_cancel"
-        android:layout_width="180dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="116dp"
-        android:text="Cancel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_confirm" />
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:text="Confirm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout18" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="center"
+                android:text="Cancel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_confirm" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

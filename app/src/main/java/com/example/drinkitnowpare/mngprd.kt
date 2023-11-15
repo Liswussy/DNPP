@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -84,7 +85,6 @@ class mngprd : ComponentActivity() {
 
                     dialog.show()
 
-
                 }
             }
 
@@ -105,14 +105,70 @@ class mngprd : ComponentActivity() {
 
         }
 
+
+        // Define a list to store the supplier names
+        val supplierList = ArrayList<String>()
+
+        // Initialize the spinner and adapter
+        val supplierSpinner = findViewById<Spinner>(R.id.prd_sup)
+        val supplierAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, supplierList)
+        supplierAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        supplierSpinner.adapter = supplierAdapter
+
+        // Add an "Add Supplier" option at the top of the spinner
+        supplierList.add("Add Supplier")
+        // supplier list document IDs
+        val supplierListID = ArrayList<String>()
+        supplierListID.add("Add Supplier")
+
+
+        // Retrieve the list of suppliers from Firestore
+        val supplierCollectionRef = db.collection("suppliers")
+        supplierCollectionRef.get()
+            .addOnSuccessListener { querySnapshot ->
+                for (document in querySnapshot) {
+                    // Add each supplier's name to the list
+                    val supplierName = document.getString("name")
+                    if (supplierName != null) {
+                        supplierList.add(supplierName)
+                        supplierListID.add(document.id)
+                    }
+                }
+                // Notify the adapter that the data has changed
+                supplierAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(baseContext, "Failed to retrieve suppliers", Toast.LENGTH_SHORT).show()
+            }
+
+        // Set a listener to handle selection in the spinner
+        supplierSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedSupplier = supplierList[position]
+                if (selectedSupplier != "Add Supplier") {
+                    // If a supplier other than "Add Supplier" is selected, set the EditText to the selected supplier
+                    // findViewById<EditText>(R.id.prd_sup).setText(selectedSupplier) // No need to set the EditText, it's handled by the spinner
+                } else {
+                    // Handle the "Add Supplier" option (e.g., open a new activity to add a supplier)
+                    // You can add your custom logic here.
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Handle the case when nothing is selected (optional)
+            }
+        }
+
+
         val addButton = findViewById<Button>(R.id.btn_add);
 
         addButton.setOnClickListener {
             val prdID = findViewById<EditText>(R.id.prdID).text.toString();
             val prdname = findViewById<EditText>(R.id.prdname).text.toString();
             val category= findViewById<Spinner>(R.id.categorySpinner).selectedItem.toString();
-            val supplier  = findViewById<EditText>(R.id.prd_sup).text.toString();
+            val supplier  = findViewById<Spinner>(R.id.prd_sup).selectedItem.toString();
             val sku = findViewById<EditText>(R.id.prd_sku).text.toString();
+            val cost = findViewById<EditText>(R.id.pt_cost).text.toString();
             val quantity = findViewById<EditText>(R.id.prd_qty).text.toString();
             val size = findViewById<EditText>(R.id.prd_size).text.toString();
             val units = findViewById<Spinner>(R.id.sizeoption).selectedItem.toString()
@@ -132,12 +188,14 @@ class mngprd : ComponentActivity() {
             val intSize: Int = size.toIntOrNull() ?: 0
             // string to float
             val floatPrice: Float = price.toFloatOrNull() ?: 0.0f
-            if (prdname.isNotEmpty()  && supplier.isNotEmpty() && sku.isNotEmpty() && size.isNotEmpty()) {
+            val floatCost: Float = cost.toFloatOrNull() ?: 0f
+            if (prdname.isNotEmpty()  && supplier.isNotEmpty() && sku.isNotEmpty() && cost.isNotEmpty() && size.isNotEmpty()) {
             val data = hashMapOf(
                 "prdnme" to prdname,
                 "ctg" to category,
                 "supp" to supplier,
                 "sku" to sku,
+                "cost" to floatCost,
                 "qnty" to intQty,
                 "units" to units,
                 "size" to intSize,
@@ -154,6 +212,27 @@ class mngprd : ComponentActivity() {
                         "Added Product!",
                         Toast.LENGTH_SHORT
                     ).show()
+                    findViewById<EditText>(R.id.prdname).text.clear()
+                    findViewById<EditText>(R.id.prd_sku).text.clear()
+                    findViewById<EditText>(R.id.prd_qty).text.clear()
+                    findViewById<EditText>(R.id.prd_size).text.clear()
+                    findViewById<EditText>(R.id.prd_price).text.clear()
+                    findViewById<EditText>(R.id.prdID).text.clear()
+                    findViewById<EditText>(R.id.pt_cost).text.clear()
+
+                    //get supplier ID from drop-down supplier name list
+                    val supplierID = supplierListID[supplierList.indexOf(supplier)]
+
+                    // create map of product with ID and name
+                    val products = mapOf(
+                        "id" to prdID,
+                        "name" to prdname
+                    )
+
+                    val supplierRef = db.collection("suppliers").document(supplierID)
+                    // Atomically add a new product to the "products" array field.
+                    supplierRef.update("products", FieldValue.arrayUnion(products))
+
 
                 }
                 .addOnFailureListener { e ->
