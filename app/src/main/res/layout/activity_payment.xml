@@ -103,15 +103,21 @@
                 android:textSize="18dp"
                 android:text="Discount" />
 
-            <TextView
-                android:id="@+id/textViewDiscount"
-                android:layout_width="wrap_content"
+
+            <Spinner
+                android:id="@+id/discount_spinner"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18dp"
-                android:gravity="end"
-                android:paddingEnd="20dp"
-                android:text="P 0.00" />
+                />
+<!--            <TextView-->
+<!--                android:id="@+id/textViewDiscount"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:textSize="18dp"-->
+<!--                android:gravity="end"-->
+<!--                android:paddingEnd="20dp"-->
+<!--                android:text="P 0.00" />-->
 
         </LinearLayout>
 

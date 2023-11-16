@@ -1,170 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#2F2E2E">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="730dp">
-
-        <EditText
-            android:id="@+id/prdname"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="194dp"
-            android:layout_marginEnd="215dp"
-            android:hint="Product Name"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:text="" />
-
-
-        <Button
-            android:id="@+id/btn_update"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="529dp"
-            android:text="Update" />
-
-        <EditText
-            android:id="@+id/prd_price"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prd_size"
-            android:layout_alignEnd="@+id/sizeoption"
-            android:layout_marginTop="43dp"
-            android:layout_marginEnd="-5dp"
-            android:hint="Price"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:text="" />
-
-        <EditText
-            android:id="@+id/pt_cost"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prd_qty"
-            android:layout_marginTop="44dp"
-            android:layout_marginEnd="21dp"
-            android:layout_toStartOf="@+id/prd_price"
-            android:hint="Cost"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:text="" />
-
-        <EditText
-            android:id="@+id/prd_size"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prd_qty"
-            android:layout_alignEnd="@+id/prd_qty"
-            android:layout_marginTop="-43dp"
-            android:layout_marginEnd="-127dp"
-            android:hint="Size"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:text="" />
-
-        <EditText
-            android:id="@+id/prd_qty"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prd_sku"
-            android:layout_alignEnd="@+id/prd_sup"
-            android:layout_marginTop="34dp"
-            android:layout_marginEnd="0dp"
-            android:hint="Quantity"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:text="" />
-
-        <EditText
-            android:id="@+id/prd_sku"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prd_sup"
-            android:layout_alignEnd="@+id/prd_sup"
-            android:layout_marginTop="-45dp"
-            android:layout_marginEnd="-207dp"
-            android:hint="SKU"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:text="" />
-
-        <EditText
-            android:id="@+id/prd_sup"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/prdname"
-            android:layout_alignStart="@+id/prdname"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="35dp"
-            android:hint="Supplier"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:text="" />
-
-        <Spinner
-            android:id="@+id/categorySpinner"
-            android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:hint="Category"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="204dp"
-            android:layout_marginEnd="42dp" />
-
-        <Spinner
-            android:id="@+id/sizeoption"
-            android:layout_width="85dp"
-            android:layout_height="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="358dp"
-            android:layout_marginEnd="6dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/page_title"
-            android:layout_width="278dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="84dp"
-            android:layout_marginEnd="-26dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:paddingTop="10dp"
+            android:background="#FDF646"
             android:text="Product Information"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_update"
-            android:layout_marginLeft="-180dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/btn_update"
-            android:gravity="center"
-            android:text="Delete" />
+            android:layout_width="match_parent"
+            android:layout_height="680dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="20dp">
 
 
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/prdname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/search_shape"
+                android:hint="Product Name"
+                android:paddingStart="10dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text=""
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"/>
+
+            <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/search_shape"
+                app:layout_constraintTop_toBottomOf="@+id/prdname"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:hint="Category" />
+
+            <Spinner
+                android:id="@+id/prd_sup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/search_shape"
+                app:layout_constraintTop_toBottomOf="@+id/categorySpinner"
+                android:hint="Supplier"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                app:layout_constraintTop_toBottomOf="@+id/prd_sup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/prd_size"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.55"
+                    android:layout_height="40dp"
+                    android:background="@drawable/search_shape"
+                    android:paddingStart="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:hint="Size"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text=""
+                    app:layout_constraintTop_toBottomOf="@+id/prd_sup" />
+
+                <Spinner
+                    android:id="@+id/sizeoption"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.45"
+                    android:layout_height="40dp"
+                    android:background="@drawable/search_shape" />
+
+            </LinearLayout>
+
+
+
+
+            <EditText
+                android:id="@+id/prd_price"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/search_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="10dp"
+                android:hint="Price"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text=""
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+
+
+            <EditText
+                android:id="@+id/pt_cost"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:paddingStart="10dp"
+                android:background="@drawable/search_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:hint="Cost"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text=""
+                app:layout_constraintTop_toBottomOf="@+id/prd_price" />
+
+
+            <EditText
+                android:id="@+id/prd_qty"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/search_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="10dp"
+                android:hint="Quantity"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text=""
+                app:layout_constraintTop_toBottomOf="@+id/pt_cost" />
+
+            <EditText
+                android:id="@+id/prd_sku"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="10dp"
+                android:background="@drawable/search_shape"
+                android:hint="SKU"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text=""
+                app:layout_constraintTop_toBottomOf="@+id/prd_qty" />
+
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/search_shape"
+                android:backgroundTint="#FDF646"
+                android:gravity="center"
+                android:text="Update"
+                app:layout_constraintTop_toBottomOf="@+id/prd_sku" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/search_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:backgroundTint="#FDF646"
+                android:text="Delete"
+                app:layout_constraintTop_toBottomOf="@+id/btn_update" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
