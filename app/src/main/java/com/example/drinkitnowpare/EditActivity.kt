@@ -239,12 +239,6 @@ class EditActivity : ComponentActivity() {
     }
 
 
-
-
-
-
-
-
     // Function to update the supplier data in the spinner dynamically
     private fun updateSupplierData() {
         // Retrieve the list of suppliers from Firestore

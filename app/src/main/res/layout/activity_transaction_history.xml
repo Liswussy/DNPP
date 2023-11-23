@@ -64,11 +64,13 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
+    <Spinner
+        android:id="@+id/dateFilterSpinner"
         android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:text="Date"
+        android:background="@drawable/white_color_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"

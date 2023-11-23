@@ -1,12 +1,12 @@
 package com.example.drinkitnowpare
 
 import android.icu.text.SimpleDateFormat
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import java.util.Locale
@@ -29,7 +29,8 @@ class delivery_report : ComponentActivity() {
                     // Get data from all fields in each document
                     val supplier = document.getString("supplier")
                     val products = document.get("products") as List<Map<String, Any>>?
-                    // val quantity = document.getLong("quantity")?.toInt() ?: 0
+                    val damage = document.getString("damage")
+                    val comment = document.getString("comment")
                     val dateTimestamp = document.getTimestamp("date")
 
                     // Format the date
@@ -39,6 +40,12 @@ class delivery_report : ComponentActivity() {
                     // Inflate the layout for each document
                     val inflater = LayoutInflater.from(this)
                     val itemView = inflater.inflate(R.layout.delivery_report_item, null)
+
+                    // Set layout parameters for the inflated view
+                    val layoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    )
 
                     // Populate the inflated layout with the collected data
                     val supplierTextView = itemView.findViewById<TextView>(R.id.tv_supp)
@@ -52,13 +59,12 @@ class delivery_report : ComponentActivity() {
                             val prodID = map["prodID"]
                             val qty = map["qty"].toString().toInt()
 
-                            if (qty > 0){
+                            if (qty > 0) {
                                 val docRef = db.collection("products").document(prodID as String)
                                 docRef.get()
                                     .addOnSuccessListener { documentSnapshot ->
                                         if (documentSnapshot.exists()) {
                                             val prdnme = documentSnapshot.getString("prdnme")
-
                                             val text = "\n${prdnme}: $qty"
                                             productsText += text
                                             productNameTextView.text = productsText.toString()
@@ -69,24 +75,22 @@ class delivery_report : ComponentActivity() {
                                     .addOnFailureListener { e ->
                                         println("Error getting document: $e")
                                     }
-
-
                             }
-
                         }
                     }
 
+                    // Populate damage and comment fields
+                    val damageTextView = itemView.findViewById<TextView>(R.id.tv_damage)
+                    damageTextView.text = damage
 
-
-
-//                    val quantityTextView = itemView.findViewById<TextView>(R.id.tv_qty)
-//                    quantityTextView.text = quantity.toString()
+                    val commentTextView = itemView.findViewById<TextView>(R.id.tv_comment)
+                    commentTextView.text = comment
 
                     val dateTextView = itemView.findViewById<TextView>(R.id.tv_date)
                     dateTextView.text = date
 
-                    // Add the inflated layout to the LinearLayout
-                    linearLayout.addView(itemView)
+                    // Add the inflated layout to the LinearLayout with the specified layout parameters
+                    linearLayout.addView(itemView, layoutParams)
                 }
             }
             .addOnFailureListener { exception ->

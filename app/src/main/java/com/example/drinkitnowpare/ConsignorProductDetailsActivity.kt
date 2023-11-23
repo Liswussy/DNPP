@@ -98,8 +98,8 @@ class ConsignorProductDetailsActivity : ComponentActivity() {
 //    }
 
 
-        }
-        private fun showPopupMenu(view: View) {
+    }
+    private fun showPopupMenu(view: View) {
         val popupMenu = PopupMenu(this, view)
         val inflater: MenuInflater = popupMenu.menuInflater
         inflater.inflate(R.menu.sales_dropdown_menu, popupMenu.menu)

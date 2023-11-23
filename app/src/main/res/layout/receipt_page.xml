@@ -15,10 +15,12 @@
         android:text="Drink it Now Pare"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="64dp"
@@ -353,7 +355,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="VAT:"
+                        android:text="VAT 12%:"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -364,7 +366,7 @@
                         android:layout_marginEnd="30dp"
                         android:layout_weight="1"
                         android:gravity="end"
-                        android:text="12%"
+                        android:text="₱0.00"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 

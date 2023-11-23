@@ -68,6 +68,7 @@ dependencies {
     implementation("com.google.android.material:material:1.9.0")
     implementation("com.google.firebase:firebase-auth-ktx:22.1.1")
     implementation("com.google.firebase:firebase-firestore-ktx:24.7.0")
+    implementation("com.itextpdf:itextpdf:5.5.13.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.core:core-ktx:1.10.1")
     testImplementation("junit:junit:4.13.2")

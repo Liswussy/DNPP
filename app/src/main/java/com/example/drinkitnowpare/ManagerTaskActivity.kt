@@ -64,5 +64,11 @@ class ManagerTaskActivity : ComponentActivity() {
             val intent = Intent(this, SalesTaskActivity::class.java)
             startActivity(intent)
         }
+
+        val btn_prd_inventory = findViewById<Button>(R.id.btn_inventory)
+        btn_prd_inventory.setOnClickListener{
+            val intent = Intent(this, InventoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

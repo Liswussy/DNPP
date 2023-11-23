@@ -28,14 +28,9 @@ class DeliveryActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.delivery_form)
 
-        val db = FirebaseFirestore.getInstance()
-        val suppliers = mutableListOf<Map<String, Any?>>()
-
         val defectSpinner = findViewById<Spinner>(R.id.prd_defect)
-
         // Create a list of defects
-        val defectList = listOf("Damage", "Expired", "Other Defects")
-
+        val defectList = listOf("Select Defect", "Damage", "Expired", "Other Defects")
         // Populate the Spinner with defects
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, defectList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -55,6 +50,9 @@ class DeliveryActivity : ComponentActivity() {
             }
         }
 
+
+        val db = FirebaseFirestore.getInstance()
+        val suppliers = mutableListOf<Map<String, Any?>>()
 
         val suppliersCollection = db.collection("suppliers")
         suppliersCollection.get()
@@ -89,6 +87,9 @@ class DeliveryActivity : ComponentActivity() {
                 val secondAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, suppliersNames)
                 secondAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 supp_name.adapter = secondAdapter
+
+                suppliersNames.add(0,"Select Supplier")
+
 
                 // update products list whenever spinner value changes
                 val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
@@ -133,8 +134,27 @@ class DeliveryActivity : ComponentActivity() {
                     }
                 }
 
+
                 val btn_confirm = findViewById<Button>(R.id.btn_confirm)
                 btn_confirm.setOnClickListener{
+
+                    val damageText = findViewById<Spinner>(R.id.prd_defect).selectedItem.toString()
+                    val commentText = findViewById<EditText>(R.id.commentBox).text.toString()
+
+
+                    if (supp_name.selectedItem == null || linearLayout.childCount == 0 || damageText.isBlank() || commentText.isBlank()) {
+                        // Display a message to the user indicating that required fields are empty
+                        Toast.makeText(applicationContext, "Please fill in all required fields", Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
+
+                    if (damageText == "Select Defect") {
+                        // Display a message to the user indicating that a valid defect should be selected
+                        Toast.makeText(applicationContext, "Please select a valid defect", Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
 
                     //val editTextValues = mutableListOf<Int>()
                     println("HELLO.")
@@ -162,6 +182,8 @@ class DeliveryActivity : ComponentActivity() {
                     }
 
 
+
+
                     val supplier = supp_name.selectedItem.toString()
                     val products = "Product Name" // Replace with the actual product name
 
@@ -181,21 +203,19 @@ class DeliveryActivity : ComponentActivity() {
                     val report = hashMapOf(
                         "supplier" to supplier,
                         "products" to productQuantities,
+                        "damage" to damageText,
+                        "comment" to commentText,
                         "date" to currentDate
                     )
 
                     // Add the document to the "delivery_reports" collection
                     deliveryReportsCollection.add(report)
                         .addOnSuccessListener { documentReference ->
-                            // Document added successfully
-                            val reportId = documentReference.id
-                            println("Report added with ID: $reportId")
+                            Log.d("DeliveryActivity", "Report added with ID: ${documentReference.id}")
                             Toast.makeText(applicationContext, "Report Created", Toast.LENGTH_SHORT).show()
-                            // You can perform any additional actions here, such as displaying a success message
                         }
                         .addOnFailureListener { e ->
-                            // Handle errors here
-                            println("Error adding report: $e")
+                            Log.e("DeliveryActivity", "Error adding report: $e")
                         }
                 }
 

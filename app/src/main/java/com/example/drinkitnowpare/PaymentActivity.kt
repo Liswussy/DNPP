@@ -6,14 +6,16 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.activity.ComponentActivity
-
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 class PaymentActivity : ComponentActivity() {
+
+    private var orderId: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
@@ -21,45 +23,42 @@ class PaymentActivity : ComponentActivity() {
         val productList = intent.getSerializableExtra("productList") as? ArrayList<Product>
 
         var total = 0.00
-        fun calculateTotal(){
+
+        fun calculateTotal() {
             total = 0.00
             if (productList != null) {
-                if(productList.isEmpty()){
+                if (productList.isEmpty()) {
                     val textViewSubTotal = findViewById<TextView>(R.id.textViewSubTotal)
-                    textViewSubTotal.setText("P $total")
+                    textViewSubTotal.text = "P $total"
                     val textViewTotal = findViewById<TextView>(R.id.textViewTotal)
-                    textViewTotal.setText("P $total")
+                    textViewTotal.text = "P $total"
                 }
 
                 for (product in productList) {
                     val price = product.price
                     val quantity = product.quantity
-                    total +=  price!! * quantity!!
-//                    println("Product ID: ${product.productID}")
-//                    println("Product Name: ${product.productName}")
-//                    println("Price: ${product.price}")
-//                    println("------------------------")
+                    total += price!! * quantity!!
                     val textViewSubTotal = findViewById<TextView>(R.id.textViewSubTotal)
-                    textViewSubTotal.setText("P $total")
+                    textViewSubTotal.text = "P $total"
                     val textViewTotal = findViewById<TextView>(R.id.textViewTotal)
-                    textViewTotal.setText("P $total")
+                    textViewTotal.text = "P $total"
                 }
-
             } else {
                 println("Product list is null.")
             }
         }
+
         calculateTotal()
 
-        val linearLayout = findViewById<LinearLayout>(R.id.cartList) // Your main vertical LinearLayout
+        val linearLayout = findViewById<LinearLayout>(R.id.cartList)
 
         if (productList != null) {
-            for(product in productList){
+            for (product in productList) {
                 val id = product.productID
                 val name = product.productName
                 val price = product.price
                 val quantity = product.quantity
-                val quantityText = "Quantity: "+quantity.toString()
+                val quantityText = "Quantity: " + quantity.toString()
 
                 val entryView = layoutInflater.inflate(R.layout.entry_layout, null)
 
@@ -74,39 +73,38 @@ class PaymentActivity : ComponentActivity() {
                 productPriceTextView.text = price.toString()
                 productQuantityTextView.text = quantityText
 
-                subButton.setOnClickListener(){
+                subButton.setOnClickListener() {
                     for (product in productList) {
                         if (product.productID == id) {
                             product.quantity = product.quantity?.plus(-1)
-                            val quantityText = "Quantity: "+product.quantity.toString()
+                            val quantityText = "Quantity: " + product.quantity.toString()
                             productQuantityTextView.text = quantityText
 
-                            if(product.quantity!! <=0){
+                            if (product.quantity!! <= 0) {
                                 linearLayout.removeView(entryView)
                                 productList.removeIf { product -> product.productID == id }
                             }
 
                             calculateTotal()
-                            break // Exit the loop after finding and updating the product
-
+                            break
                         }
                     }
                 }
 
-                addButton.setOnClickListener(){
+                addButton.setOnClickListener() {
                     for (product in productList) {
                         if (product.productID == id) {
                             product.quantity = product.quantity?.plus(1)
-                            val quantityText = "Quantity: "+product.quantity.toString()
+                            val quantityText = "Quantity: " + product.quantity.toString()
                             productQuantityTextView.text = quantityText
 
                             calculateTotal()
-                            break // Exit the loop after finding and updating the product
+                            break
                         }
                     }
                 }
 
-                modifyButton.setOnClickListener(){
+                modifyButton.setOnClickListener() {
                     val dialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog_layout, null)
                     val leftTextView: TextView = dialogView.findViewById(R.id.leftTextView)
                     val rightTextView: TextView = dialogView.findViewById(R.id.rightTextView)
@@ -124,28 +122,25 @@ class PaymentActivity : ComponentActivity() {
                         .create()
 
                     confirmButton.setOnClickListener {
-                        // Handle confirm button click here
                         for (product in productList) {
                             if (product.productID == id) {
                                 val inputText = editTextNumber.text.toString()
                                 if (inputText.isNotEmpty()) {
-                                    val numericValue = inputText.toInt() // Convert the string to a double
+                                    val numericValue = inputText.toInt()
                                     product.quantity = numericValue
-                                    val quantityText = "Quantity: "+product.quantity.toString()
+                                    val quantityText = "Quantity: " + product.quantity.toString()
                                     productQuantityTextView.text = quantityText
 
-                                    if(product.quantity!! <=0){
+                                    if (product.quantity!! <= 0) {
                                         linearLayout.removeView(entryView)
                                         productList.removeIf { product -> product.productID == id }
                                     }
 
                                     calculateTotal()
-                                    break // Exit the loop after finding and updating the product
+                                    break
                                 } else {
                                     println("EditText is empty")
                                 }
-
-
                             }
                         }
                         dialog.dismiss()
@@ -157,6 +152,7 @@ class PaymentActivity : ComponentActivity() {
                 linearLayout.addView(entryView)
             }
         }
+
         val buttonPayment = findViewById<Button>(R.id.button)
         buttonPayment.setOnClickListener {
             val intent = Intent(this, CheckoutActivity::class.java)
@@ -170,10 +166,69 @@ class PaymentActivity : ComponentActivity() {
         val content = SpannableString(text)
         content.setSpan(UnderlineSpan(), 0, text.length, 0)
         myTextView.text = content
-        myTextView.setOnClickListener(){
+        myTextView.setOnClickListener() {
             val intent = Intent(this, CashRegisterActivity::class.java)
             intent.putExtra("productList", productList)
             startActivity(intent)
+        }
+
+        // Firestore update code is added here
+
+        val discountSpinner = findViewById<Spinner>(R.id.discount_spinner)
+        val discountOption = listOf("5%", "10%", "15%", "20%", "30%", "40%", "50%")
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, discountOption)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        discountSpinner.adapter = adapter
+
+        discountSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>,
+                selectedItemView: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (selectedItemView != null) {
+                    println("$position")
+                    val selectedDiscount = discountOption[position].replace("%", "").toDouble()
+                    println("$selectedDiscount")
+
+                    val discountedAmount = total * (selectedDiscount / 100)
+                    val discountedTotal = total - discountedAmount
+                    println("$discountedTotal")
+
+                    runOnUiThread {
+                        val textViewDiscountedTotal =
+                            findViewById<TextView>(R.id.textViewDiscountedTotal)
+                        textViewDiscountedTotal.text = "P $discountedTotal"
+                    }
+
+                    updateFirestoreDocument(selectedDiscount)
+                } else {
+                    println("selectedItemView is null")
+                }
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+                // Do nothing if nothing is selected
+            }
+        }
+    }
+
+    private fun updateFirestoreDocument(selectedDiscount: Double) {
+        val db = FirebaseFirestore.getInstance()
+        val ordersCollection = db.collection("orders")
+
+        if (orderId != null) {
+            val orderDocument = ordersCollection.document(orderId!!)
+
+            orderDocument.update("discount", selectedDiscount)
+                .addOnSuccessListener {
+                    println("Discount updated successfully")
+                }
+                .addOnFailureListener { e ->
+                    println("Error updating discount: $e")
+                }
         }
     }
 }

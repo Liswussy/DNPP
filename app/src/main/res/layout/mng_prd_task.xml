@@ -154,13 +154,14 @@
                     />
 
                 <Button
+                    android:id="@+id/btn_inventory"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/search_shape"
                     android:backgroundTint="#FDF646"
-                    android:text="Dashboard"
+                    android:text="Inventory"
                     android:textSize="14sp"
 
                     />
