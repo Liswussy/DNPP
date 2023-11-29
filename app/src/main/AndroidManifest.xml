@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -22,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DrinkItNowPare"
         tools:targetApi="31">
+        <activity
+            android:name=".StockTakeActivity"
+            android:exported="false" />
         <activity
             android:name=".InventoryActivity"
             android:exported="false" />
